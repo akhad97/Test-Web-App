@@ -43,12 +43,49 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+    'social_django',
 
     'crispy_forms',
     'widget_tweaks',
 
     'tweets',
+    'rest_framework',
+    'django_filters',
+    'rest_framework.authtoken',
+
+    'rest_framework_swagger',
 ]
+
+SITE_ID = 1
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '34754079793-bku7qp1jr59vsl8m9tl9vudniba4o8l1.apps.googleusercontent.com',
+            'secret': 'hJzlb9Du0PdlNQBYRQEMw_4d',
+            'key': ''
+        }
+    }
+}
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 2,
+}
+
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,6 +97,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
     "whitenoise.middleware.WhiteNoiseMiddleware",
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 django_heroku.settings(locals())
@@ -82,10 +121,22 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',  # <-- Here
+                'social_django.context_processors.login_redirect', # <-- Here
             ],
         },
     },
 ]
+
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 WSGI_APPLICATION = 'Twitter_clone.wsgi.application'
 
@@ -116,11 +167,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-# AUTHENTICATION_BACKENDS = [
-#     'django.contrib.auth.backends.ModelBackend',
-#     'allauth.account.auth_backends.AuthenticationBackend',
-#
-# ]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -151,3 +197,10 @@ LOGIN_REDIRECT_URL = 'home_view'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_LOGOUT_ON_GET = True
+
+
+SOCIAL_AUTH_GITHUB_KEY = 'Iv1.61b8f7c18f1e2ed9'  # App ID
+SOCIAL_AUTH_GITHUB_SECRET = '90b9c4cfb8f353d2b08b9db76241e19908e89090'  # App Secret
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '34754079793-bku7qp1jr59vsl8m9tl9vudniba4o8l1.apps.googleusercontent.com'  # App ID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'hJzlb9Du0PdlNQBYRQEMw_4d'  # App Secret

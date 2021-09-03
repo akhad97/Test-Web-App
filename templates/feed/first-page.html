@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 {% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,6 +30,14 @@
             <div class="buttons">
                 <a class="btn btn-outline-primary" style="padding: 21px 37px; border-radius: 0; font-size: 20px; margin-right: 15px;" href="{% url 'account_login' %}">Sign in</a>
                 <a class="btn btn-primary" style="padding: 21px 37px; border-radius: 0; font-weight: bold; font-size: 20px;" href="{% url 'account_signup' %}">Register Now</a>
+                <br><br>
+                <a href="{% provider_login_url 'google' %}" class="btn btn-danger btn-user btn-block">
+                    <i class="fab fa-google fa-fw"></i> Login with Google
+                </a>
+
+                <a href="{% url 'social:begin' 'github' %}" class="btn btn-success btn-user btn-block">
+                    <i class="fab fa-github fa-fw"></i> Login with Github
+                </a>
 
             </div>
         </div>

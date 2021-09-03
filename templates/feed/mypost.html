@@ -17,14 +17,6 @@
         <div class="row">
             {% include 'feed/left_site.html' %}
             <div class="col-6 right-container" style="margin-top: 70px;">
-                <!-- <h3>Tweets</h3>
-                <div class="new_tweet">
-                    <form method="POST" action="{% url 'add_tweet' %}">
-                        {% csrf_token %}
-                        <textarea name="content" class="new_tweet_content"></textarea><br>
-                        <button class="new_tweet_submit" type="submit">Submit</button>
-                    </form>
-                </div> -->
                 {% for tweet in tweets %}
                 <article class="media content-section hovered-tweet" style="width: 575px;">
                     <div style="width: 100%; word-break: break-all;">
@@ -134,54 +126,7 @@
     </span>
                 </div>
             </div>
-            <div class="col-3" style="margin-top: 20px; border-left: 1px solid whitesmoke;"><br><br><br>
-                <div class="wraper">
-                    <form method="POST" action="{% url 'search' %}">
-                        {% csrf_token %}
-                        <input class="search_bar" style="width: 15em; margin-bottom: 20px;" placeholder="Search" name="search">
-                        <button class="search">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-                <article class="t-section media content-section">
-
-                    <div class="row ">
-                        <div class="col-12">
-                            
-                            <h3>Who to follow</h3>
-                        </div>
-                        <ul class="col-12 mt-2" style="text-align: left;">
-                            {% for user in users %}
-
-                            {% if user == request.user %}                           
-                            {% else %}
-                                <li>
-                                    <div class="who-to-follow">
-                                        <div
-                                               style="padding-left: 0px !important;"
-                                               class="col-8 no-padding d-flex align-items-center">
-                                           <img
-                                               class="rounded-circle mr-2"
-                                               style="width: 20px; height: 20px;"
-                                               src="{% get_media_prefix %}{{ user_profile.avatar }}">
-                                           <a class="mr-2 white-important" href="{% url 'user_view' user.username %}">
-                                               {{ user.username }}
-                                           </a>
-                                       </div>
-                                        <p>{{ user.email }}</p>
-                                    </div>
-                                </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-            
-                    </div>
-            
-                </article>
-            </div>
-     
-        </div>
+           
     </div>
 
 {% endblock %}

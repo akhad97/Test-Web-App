@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.conf import settings
 
 
 class Post(models.Model):
@@ -42,7 +43,7 @@ class Comment(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, primary_key=True, verbose_name='user', related_name='profile',
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, primary_key=True, verbose_name='user', related_name='profile',
                                 on_delete=models.CASCADE)
     avatar = models.ImageField(null=True, default="user.png")
 

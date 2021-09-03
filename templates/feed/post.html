@@ -14,11 +14,11 @@
                 <h3>Tweet</h3>
                 <div class="tweet">
                     <a href="{% url 'user_view' tweet.author.username %}">
-                        <div class="title"><img src="{% get_media_prefix %}{{ user_profile.avatar }}"
+                        <div class="title1"><img src="{% get_media_prefix %}{{ user_profile.avatar }}"
                                                 class="small-avatar">
                             <span>{{ tweet.author.username }}</span>
                         </div>
-                    </a>
+                    </a><br>
                     
                     <div class="content">
                         <span>{{ tweet.content }} </span>

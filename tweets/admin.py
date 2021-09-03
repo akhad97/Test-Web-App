@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post, Comment, UserProfile, Follow
+from .models import Post, Comment, Follow
 
 
 # Register your models here.
@@ -17,9 +17,9 @@ class CommentAdmin(admin.ModelAdmin):
     readonly_fields = ('add_date',)
 
 
-@admin.register(UserProfile)
-class UserProfileAdmin(admin.ModelAdmin):
-    pass
+# @admin.register(UserProfile)
+# class UserProfileAdmin(admin.ModelAdmin):
+#     pass
 
 
 @admin.register(Follow)

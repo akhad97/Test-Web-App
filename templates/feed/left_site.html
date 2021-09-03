@@ -1,10 +1,10 @@
 {% load static %}
 <div class="col-3 left-container">
     <a href="{% url 'home_view' %}"><i class="fab fa-twitter logo"></i></a><br>
-    <h2 style="color: #fff;">Twitter Clone</h2>
+    <h2 style="color: #fff; font-size: 45px; ">Twitter Clone</h2>
     <div class="profile" style="margin:20px">
         <img src="{% get_media_prefix %}{{ user_profile.avatar }}" class="avatar">
-        <h5>{{ user_info.username|capfirst }}</h5>
+        <h5 style="color: #fff;">{{ user_info.username|capfirst }}</h5>
         <div class="row" >
             <div class="col-6"><h5 style="color: #adadad; font-size: 18px;">Followers</h5>
             </div>
