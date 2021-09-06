@@ -26,6 +26,7 @@ from .pagination import CustomPagination
 from .utils import get_and_authenticate_user, create_user_account
 
 from rest_framework.views import APIView
+import coreapi
 
 
 
@@ -405,6 +406,7 @@ class reset_password(APIView):
             alldatas['data'] = 'successfully registered'
             return Response(alldatas)
         return Response('failed retry after some time')
+
 
 
 class PostListViewSchema(AutoSchema):
