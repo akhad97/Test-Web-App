@@ -108,7 +108,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 
     'social_django.middleware.SocialAuthExceptionMiddleware',
-    'social_auth.backend.pipeline.social.social_auth_user'
+    # 'social_auth.backend.pipeline.social.social_auth_user'
 ]
 
 django_heroku.settings(locals())
