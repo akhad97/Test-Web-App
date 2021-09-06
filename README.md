@@ -1,4 +1,4 @@
-# Twitter clone
+# Twitter clone web
 
 ### Fully functional Django website that works exactly like real Twitter<br>
 
