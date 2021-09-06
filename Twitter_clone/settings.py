@@ -25,7 +25,7 @@ SECRET_KEY = 'l0pd1&-#q=o%o79ian74e=h-#75ma5xwyv%l&!0uhk(eonuxbz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://testtwitterapp.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -70,13 +70,13 @@ SOCIALACCOUNT_PROVIDERS = {
             'secret': 'hJzlb9Du0PdlNQBYRQEMw_4d',
             'key': ''
         },
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
-        }
+        # 'SCOPE': [
+        #     'profile',
+        #     'email',
+        # ],
+        # 'AUTH_PARAMS': {
+        #     'access_type': 'online',
+        # }
     }
 }
 
@@ -108,6 +108,7 @@ MIDDLEWARE = [
     "whitenoise.middleware.WhiteNoiseMiddleware",
 
     'social_django.middleware.SocialAuthExceptionMiddleware',
+    'social_auth.backend.pipeline.social.social_auth_user'
 ]
 
 django_heroku.settings(locals())
@@ -144,6 +145,11 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth2',
 
     'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_PIPELINE = (
+    '...',
+    'social_core.pipeline.user.user_details',
+    '...',
 )
 
 
