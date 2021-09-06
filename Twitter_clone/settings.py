@@ -61,6 +61,10 @@ INSTALLED_APPS = [
     'drf_yasg',
 ]
 
+TEMPLATE_LOADERS = (
+    'django.template.loaders.eggs.Loader',
+)
+
 SITE_ID = 1
 
 
