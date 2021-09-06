@@ -65,17 +65,17 @@ SITE_ID = 1
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
-         'SCOPE': [
+        'APP': {
+            'client_id': '34754079793-bku7qp1jr59vsl8m9tl9vudniba4o8l1.apps.googleusercontent.com',
+            'secret': 'hJzlb9Du0PdlNQBYRQEMw_4d',
+            'key': ''
+        },
+        'SCOPE': [
             'profile',
             'email',
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
-        },
-        'APP': {
-            'client_id': '34754079793-bku7qp1jr59vsl8m9tl9vudniba4o8l1.apps.googleusercontent.com',
-            'secret': 'hJzlb9Du0PdlNQBYRQEMw_4d',
-            'key': ''
         }
     }
 }
