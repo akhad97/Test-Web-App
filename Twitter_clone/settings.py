@@ -118,9 +118,6 @@ ROOT_URLCONF = 'Twitter_clone.urls'
 
 TEMPLATES = [
     {
-        'libraries': {  
-                    'staticfiles': 'django.templatetags.static',
-                },
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
